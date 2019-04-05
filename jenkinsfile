@@ -22,5 +22,8 @@ node
     {
         echo "Deliever the code updated"
     }    
-    
+    stage('Publish test results')
+    {
+      junit '**/test-results/test/*.xml'
+    } 
 }
