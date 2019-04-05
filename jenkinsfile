@@ -20,7 +20,7 @@ node
     }
     stage('Delievery')
     {
-        echo "Deliever the code"
+        echo "Deliever the code updated"
     }    
     
 }
