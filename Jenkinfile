@@ -3,14 +3,14 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                sh './gradlew check'
+                echo 'mahipal'
             }
         }
     }
     post {
         always {
             archiveArtifacts artifacts: 'build/libs/**/*.jar', fingerprint: true
-            junit '**/build/test-reports/*.xml'
+            junit 'tmp/*.xml'
         }
     }
 }
