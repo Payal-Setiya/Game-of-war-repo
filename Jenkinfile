@@ -1,15 +1,22 @@
 pipeline {
     agent any
     stages {
+        stage('Build') {
+            steps {
+                sh './gradlew build'
+            }
+        }
         stage('Test') {
             steps {
-                echo 'mahipal'
+                sh './gradlew check'
             }
         }
     }
-   post {
-      always {
-        junit '/var/lib/jenkins/jobs/devop/builds/*/*.xml'
-      }
-   } 
+
+    post {
+        always {
+            archiveArtifacts artifacts: 'build/libs/**/*.jar', fingerprint: true
+            junit 'build/reports/**/*.xml'
+        }
+    }
 }
