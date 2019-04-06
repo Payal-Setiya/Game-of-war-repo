@@ -22,10 +22,6 @@ node
     {
         echo "Deliever the code"
     }   
-    post {
-        always {
-            junit 'build/reports/**/*.xml'
-        }
-    } 
+
     
 }
