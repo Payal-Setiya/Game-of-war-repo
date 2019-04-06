@@ -9,7 +9,7 @@ pipeline {
     }
     post {
         always {
-            junit '/var/lib/jenkins/jobs/pip/builds/*/*.xml'
+            junit '/var/lib/jenkins/workspace/devop/*.xml'
         }
     }
 }
