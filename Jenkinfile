@@ -1,8 +1,10 @@
 pipeline {
     agent any
+    
     stages {
         stage('Build') {
             steps {
+                gradle wrapper  Gradle 5.3.1
                 sh './gradlew build'
             }
         }
