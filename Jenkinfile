@@ -8,6 +8,7 @@ pipeline {
                javac DeckOfCards.java
             }
         }
+        }
 
     post {
         always {            
