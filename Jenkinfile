@@ -10,7 +10,7 @@ pipeline {
     
     post {
         always {
-            junit '/var/lib/jenkins/jobs/devop/builds/**/*.xml'
+            junit '/var/lib/jenkins/workspace/devop/target/surefire-reports/*.xml'
         }
     }
 
