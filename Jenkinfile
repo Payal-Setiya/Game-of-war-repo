@@ -1,18 +1,33 @@
-pipeline {
-    agent any
-    
-    stages {
-        stage('Build') {
-            steps {
-               
-               javac DeckOfCards.java
-            }
-        }
-        }
-
+def workspace
+node
+{
+    stage('Checkout')
+    {
+     checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'payal_new', url: 'https://github.com/Payal-Setiya/Game-of-war-repo.git']]])
+     workspace =pwd()
+    }
+    stage('static code analysis')
+    {
+        echo "static code analysis"
+    }
+    stage('Build')
+    {
+        echo "Build the code"
+    }
+    stage('Unit Testing')
+    {
+        echo "Test the script"
+    }
+    stage('Delievery')
+    {
+        echo "Deliever the code"
+    }   
     post {
-        always {            
-           junit 'build/reports/**/*.xml'
+        always {
+            junit '/var/lib/jenkins/jobs/devop/builds/**/*.xml'
         }
     }
+
+ 
+    
 }
