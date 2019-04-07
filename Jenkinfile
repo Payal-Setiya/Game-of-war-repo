@@ -5,20 +5,13 @@ pipeline {
         stage('Build') {
             steps {
                
-               sh './gradlew build'
+               javac DeckOfCards.java
             }
         }
-        stage('Test') {
-            steps {
-                sh './gradlew check'
-            }
-        }
-    }
 
     post {
-        always {
-            archiveArtifacts artifacts: 'build/libs/**/*.jar', fingerprint: true
-            junit 'build/reports/**/*.xml'
+        always {            
+           junit 'build/reports/**/*.xml'
         }
     }
 }
